@@ -43,11 +43,7 @@ Tento projekt slouží jako **referenční implementace** bezpečného zpracová
 
 ## 🏗️ Architektura systému
 
-```
-
-
-
-```
+![diagram](https://github.com/user-attachments/assets/f0917757-dad0-4268-855f-749f81b6d72e)
 
 
 ### Moduly aplikace a jejich podrobné funkce
