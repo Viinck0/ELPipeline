@@ -45,7 +45,7 @@ Tento projekt slouží jako **referenční implementace** bezpečného zpracová
 
 ```
 
-![diagram_ent](https://github.com/user-attachments/assets/106cca0a-3b87-465b-8f7d-5e92483fc22a)
+![diagram_ent](https://github.com/user-attachments/assets/b520ea33-f637-4ddd-bf0d-1d8649928c54)
 
 ```
 
