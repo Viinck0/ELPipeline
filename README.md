@@ -90,101 +90,9 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 
 Tento diagram znázorňuje tok dat od surové extrakce až po business-ready výstupy:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    RICK & MORTY EL PIPELINE - DATA FLOW                      │
-└─────────────────────────────────────────────────────────────────────────────┘
+![schema](https://github.com/user-attachments/assets/fa4cd573-13f5-4b2a-99b9-88a2332bb1fb)
 
-┌──────────────────────┐
-│   RAW DATA LAYER     │
-│   (API Response)     │
-├──────────────────────┤
-│                      │
-│  📦 Characters JSON  │     📦 Locations JSON
-│  ┌────────────────┐  │     ┌────────────────┐
-│  │ id: 1          │  │     │ id: 1          │
-│  │ name: "Rick"   │  │     │ name: "Earth"  │
-│  │ status: "Alive"│  │     │ type: "Planet" │
-│  │ species: "Human│  │     │ dimension: "C13│
-│  │ location: {    │  │     │                │
-│  │   url: ".../1" │  │     │                │
-│  │ }              │  │     │                │
-│  └────────────────┘  │     └────────────────┘
-│  ⚠️ Issues:          │     ⚠️ Issues:
-│  - "unknown" values  │     - "unknown" values
-│  - Missing URLs      │     - Empty dimensions
-│  - Duplicates        │     - Duplicates
-│                      │
-└──────────┬───────────┘     └───────┬──────────┘
-           │                        │
-           │  Extract               │  Extract
-           │  (extractor.py)        │  (extractor.py)
-           │                        │
-           ▼                        ▼
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                         VALIDATION LAYER                                      │
-│                         (validator.py)                                        │
-├──────────────────────────────────────────────────────────────────────────────┤
-│  🔍 Validation Steps:                                                         │
-│  ┌─────────────────────────────────────────────────────────────────────────┐ │
-│  │ 1. Duplicate Detection    → Remove/flag duplicate IDs                   │ │
-│  │ 2. Semantic Anomalies     → Log "unknown" values in status/species/etc. │ │
-│  │ 3. Reference Validation   → Verify location URLs are valid              │ │
-│  │ 4. Integrity Check        → Ensure location_id references exist         │ │
-│  └─────────────────────────────────────────────────────────────────────────┘ │
-│  📊 Validation Report:                                                        │
-│  - Characters: 460 valid, 362 anomalies logged, 21 missing location URLs     │
-│  - Locations: 126 valid, 31 anomalies logged                                 │
-└──────────────────────────────────────────────────────────────────────────────┘
-           │
-           │  Load (Validated Data)
-           │  (loader.py)
-           ▼
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                         STRUCTURED LAYER                                      │
-│                         (SQLite Database)                                     │
-├──────────────────────────────────────────────────────────────────────────────┤
-│  📁 rick_and_morty.db                                                        │
-│  ┌─────────────────────────┐           ┌─────────────────────────┐           │
-│  │     locations           │           │     characters          │           │
-│  ├─────────────────────────┤           ├─────────────────────────┤           │
-│  │ id (PK)        INTEGER  │◄──────────│ id (PK)        INTEGER  │           │
-│  │ name           TEXT     │     FK    │ name           TEXT     │           │
-│  │ type           TEXT     │           │ species        TEXT     │           │
-│  │ dimension      TEXT     │           │ status         TEXT     │           │
-│  └─────────────────────────┘           │ location_id    INTEGER  │           │
-│                                        └─────────────────────────┘           │
-└──────────────────────────────────────────────────────────────────────────────┘
-           │
-           │  Query / Report
-           ▼
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                    BUSINESS-READY OUTPUT LAYER                                │
-├──────────────────────────────────────────────────────────────────────────────┤
-│  📊 KPI Dashboard Table:                                                      │
-│  ┌─────────────────────────────────────────────────────────────────────────┐ │
-│  │ Metric                          │ Value      │ Notes                    │ │
-│  ├─────────────────────────────────────────────────────────────────────────┤ │
-│  │ Total Characters                │ 620        │                          │ │
-│  │ Total Locations                 │ 126        │                          │ │
-│  │ Characters by Status (Alive)    │ 312 (50%)  │                          │ │
-│  │ Characters by Status (Dead)     │ 247 (40%)  │                          │ │
-│  │ Characters with Unknown Status  │ 61 (10%)   │ ⚠️ Data quality issue   │ │
-│  │ Characters without Location     │ 21 (3.4%)  │ ⚠️ Needs investigation  │ │
-│  └─────────────────────────────────────────────────────────────────────────┘ │
-│  📋 Report Dataset Example (Top Locations):                                   │
-│  ┌─────────────────────────────────────────────────────────────────────────┐ │
-│  │ location_name  │ dimension │ type     │ character_count │ %_of_total   │ │
-│  ├─────────────────────────────────────────────────────────────────────────┤ │
-│  │ Earth (C-137)  │ C-137     │ Planet   │ 45               │ 7.3%         │ │
-│  │ Citadel of Ricks│ C-132    │ Space    │ 38               │ 6.1%         │ │
-│  │ Sanctuary III  │ C-137     │ Spaceship│ 12               │ 1.9%         │ │
-│  └─────────────────────────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────────────────────────┘
-
-LEGEND: 📦 Raw Data | 🔍 Validation | 📁 Storage | 📈 Business Output
-        ⚠️ Issue/Warning | ✓ Success | FK Foreign Key
-```
+"Výše uvedený diagram pokrývá technickou EL a čistící vrstvu. Požadovaný Business-ready output (KPIs a analytické pohledy) je realizován formou předpřipravených analytických dotazů (viz ukázkové dotazy v tomto README), které slouží jako přímý podklad pro vizualizační nástroje (např. Grafana / PowerBI)."
 
 ---
 
@@ -573,11 +481,6 @@ Tato sekce explicitně odpovídá na požadavky zadaní:
 | Idempotence | ✅ INSERT OR IGNORE | ❌ Manuální deduplikace |
 
 ---
-## Diagram
-
-![schema](https://github.com/user-attachments/assets/fa4cd573-13f5-4b2a-99b9-88a2332bb1fb)
-
-"Výše uvedený diagram pokrývá technickou EL a čistící vrstvu. Požadovaný Business-ready output (KPIs a analytické pohledy) je realizován formou předpřipravených analytických dotazů (viz ukázkové dotazy v tomto README), které slouží jako přímý podklad pro vizualizační nástroje (např. Grafana / PowerBI)."
 
 ## Koncept Enterprise přesah
 
