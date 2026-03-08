@@ -45,9 +45,10 @@ Tento projekt slouží jako **referenční implementace** bezpečného zpracová
 
 ```
 
-![diagram_ent](https://github.com/user-attachments/assets/b520ea33-f637-4ddd-bf0d-1d8649928c54)
+![diagram](https://github.com/user-attachments/assets/4766ce21-45af-4c8f-9af0-ca88b0792d70)
 
 ```
+
 
 ### Moduly aplikace a jejich podrobné funkce
 
