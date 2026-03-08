@@ -45,7 +45,7 @@ Tento projekt slouží jako **referenční implementace** bezpečného zpracová
 
 ```
 
-(https://github.com/user-attachments/assets/4766ce21-45af-4c8f-9af0-ca88b0792d70)
+
 
 ```
 
