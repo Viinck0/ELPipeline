@@ -1,0 +1,3 @@
+# Závislosti pro EL pipeline - pouze requests pro HTTP komunikaci s API
+# Použití minimálního počtu závislostí zvyšuje bezpečnost a snižuje attack surface
+requests>=2.31.0
