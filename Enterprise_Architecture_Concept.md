@@ -628,13 +628,4 @@ Tento projekt je určen pro vzdělávací účely v rámci úkolového zadání 
 
 ---
 
-## 🔗 Odkazy
-
-- [Rick & Morty API Documentation](https://rickandmortyapi.com/documentation)
-- [Cryptography Library](https://cryptography.io/)
-- [NIST Guidelines for Key Management](https://csrc.nist.gov/publications/detail/sp/800-57/part-1/rev-5/final)
-- [GDPR Article 32 - Security of Processing](https://gdpr.eu/article-32-security-of-processing/)
-
----
-
 *Poslední aktualizace: 8. března 2026*
