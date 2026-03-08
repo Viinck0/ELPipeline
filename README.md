@@ -573,6 +573,15 @@ Tato sekce explicitně odpovídá na požadavky zadaní:
 | Idempotence | ✅ INSERT OR IGNORE | ❌ Manuální deduplikace |
 
 ---
+## Diagram
+
+![schema](https://github.com/user-attachments/assets/fa4cd573-13f5-4b2a-99b9-88a2332bb1fb)
+
+"Výše uvedený diagram pokrývá technickou EL a čistící vrstvu. Požadovaný Business-ready output (KPIs a analytické pohledy) je realizován formou předpřipravených analytických dotazů (viz ukázkové dotazy v tomto README), které slouží jako přímý podklad pro vizualizační nástroje (např. Grafana / PowerBI)."
+
+## Koncept Enterprise přesah
+
+Záměrně jsem tento skript udržel lehký a čistý pro snadné spuštění a hodnocení. Nicméně vzhledem k tomu, že HECON pracuje v energetice s citlivými daty, připravil jsem i dodatečný koncepční návrh produkční architektury. Detaily naleznete v přiloženém dokumentu Enterprise_Architecture_Concept.md
 
 ## 📄 Licence
 
