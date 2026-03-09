@@ -235,7 +235,8 @@ def load_characters(
     """
     Nahraje postavy do databázové tabulky.
 
-    Extrahuje location_id z URL odkazu. Pokud URL chybí, uloží NULL.
+    Extrahuje location_id z URL odkazu. Pokud URL chybí nebo odkazuje
+    na neexistující lokaci, uloží NULL.
     Detekuje duplicity před vkládáním a reportuje je.
     Používá INSERT OR IGNORE pro idempotentní vkládání.
     Při chybě provede rollback celé transakce.
@@ -256,6 +257,12 @@ def load_characters(
     """
 
     null_location_count: int = 0
+    invalid_reference_count: int = 0
+
+    # Nejprve získáme validní location_id
+    cursor: sqlite3.Cursor = connection.cursor()
+    cursor.execute("SELECT id FROM locations")
+    valid_location_ids: set[int] = {row[0] for row in cursor.fetchall()}
 
     try:
         cursor: sqlite3.Cursor = connection.cursor()
@@ -276,9 +283,17 @@ def load_characters(
                 species: str | None = character.get("species")
                 status: str | None = character.get("status")
 
-                # Extrakce location_id z URL
+                # Extrakce location_id z URL a validace reference
                 location_url: str | None = character.get("location", {}).get("url")
                 location_id: int | None = _extract_location_id(location_url)
+
+                # Kontrola referenční integrity
+                if location_id is not None and location_id not in valid_location_ids:
+                    invalid_reference_count += 1
+                    logger.debug(
+                        f"Postava ID={char_id} odkazuje na neexistující lokaci ID={location_id}, ukládám NULL"
+                    )
+                    location_id = None
 
                 if location_id is None:
                     null_location_count += 1
@@ -301,6 +316,10 @@ def load_characters(
             f"{result.skipped_duplicates} duplicit, {result.errors} chyb, "
             f"{null_location_count} bez validní lokace"
         )
+        if invalid_reference_count > 0:
+            logger.warning(
+                f"{invalid_reference_count} postav mělo odkaz na neexistující lokaci - opraveno na NULL"
+            )
 
     except sqlite3.Error as e:
         logger.exception(f"Chyba při nahrávání postav: {e}")

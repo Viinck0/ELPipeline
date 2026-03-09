@@ -1,610 +1,268 @@
-2026-03-09 16:21:43 | INFO     | __main__ | Logování do souboru: C:\Users\Vinci\Desktop\ukol2\el_pipeline.log
-2026-03-09 16:21:43 | INFO     | __main__ | Logging inicializován s úrovní INFO
-2026-03-09 16:21:43 | INFO     | __main__ | Spuštění z adresáře: C:\Users\Vinci\Desktop\ukol2
-2026-03-09 16:21:43 | INFO     | __main__ | Verze Pythonu: 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]
-2026-03-09 16:21:43 | INFO     | __main__ | ============================================================
-2026-03-09 16:21:43 | INFO     | __main__ | Zahájení EL pipeline pro Rick & Morty data
-2026-03-09 16:21:43 | INFO     | __main__ | ============================================================
-2026-03-09 16:21:43 | INFO     | __main__ | KROK 1/4: Extrakce dat z Rick & Morty API
-2026-03-09 16:21:43 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:43 | INFO     | extractor | Zahájení kompletní extrakce dat z Rick & Morty API
-2026-03-09 16:21:43 | INFO     | extractor | Zahájení extrakce entity 'location' z URL: https://rickandmortyapi.com/api/location
-2026-03-09 16:21:45 | INFO     | extractor | Dosaženo konce paginace pro 'location' po 7 stránkách
-2026-03-09 16:21:45 | INFO     | extractor | Extrakce 'location' dokončena: celkem 126 záznamů
-2026-03-09 16:21:45 | INFO     | extractor | Zahájení extrakce entity 'character' z URL: https://rickandmortyapi.com/api/character
-2026-03-09 16:21:54 | ERROR    | extractor | HTTP chyba 0 pro URL: https://rickandmortyapi.com/api/character?page=34
-2026-03-09 16:21:54 | ERROR    | extractor | Extrakce 'character' přerušena - nepodařilo se získat response
-2026-03-09 16:21:54 | INFO     | extractor | Extrakce 'character' dokončena: celkem 660 záznamů
-2026-03-09 16:21:54 | INFO     | extractor | Kompletní extrakce dokončena: 660 postav, 126 lokací
-2026-03-09 16:21:54 | INFO     | __main__ | KROK 2/4: Validace extrahovaných dat
-2026-03-09 16:21:54 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:54 | INFO     | validator | Zahájení kompletní validace dat
-2026-03-09 16:21:54 | INFO     | validator | Zahájení validace 126 lokací
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=2: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=3: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=4: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=6: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=7: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=10: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=11: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=13: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=15: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=16: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=25: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=27: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=30: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=36: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=37: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=38: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=39: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=40: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=41: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=44: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=53: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=54: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=57: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=65: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=66: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=68: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=73: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=75: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=76: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=123: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Lokace ID=126: pole 'dimension' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | INFO     | validator | Validace lokací dokončena: 126 validních z 126, 0 duplicit, 31 anomálií
-2026-03-09 16:21:54 | INFO     | validator | Množina validních ID lokací: 126 záznamů
-2026-03-09 16:21:54 | INFO     | validator | Zahájení validace 660 postav
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=1: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=2: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=3: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=4: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=5: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=6: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=7: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=8: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=9: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=11: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=12: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=13: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=13: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=13: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=14: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=14: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=15: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=15: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=17: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=19: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | INFO     | validator | Postava ID=19 (Antenna Rick): chybějící nebo nevalidní location URL
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=20: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=21: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=22: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=23: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=23: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=25: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=27: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=28: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=30: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | INFO     | validator | Postava ID=30 (Baby Poopybutthole): chybějící nebo nevalidní location URL
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=33: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=34: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=35: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=36: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | INFO     | validator | Postava ID=36 (Beta-Seven): chybějící nebo nevalidní location URL
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=37: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=38: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=39: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=41: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=42: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=43: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=44: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=45: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=46: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | INFO     | validator | Postava ID=46 (Bill): chybějící nebo nevalidní location URL
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=48: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=49: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=49: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=51: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=52: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=53: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=53: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=54: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:54 | WARNING  | validator | Postava ID=55: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=56: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=57 (Borpocian): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=58: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=59: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=60 (Calypso): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=61: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=62 (Canklanker Thom): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=64: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=68: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=69: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=70: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=70 (Concerto): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=71: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=71: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=72: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=73: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=74: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=75: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=75: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=77: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=78: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=79: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=80: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=82: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=82: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=83: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=83: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=84: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=85: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=86: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=88: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=91: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=92: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=94: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=95: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=95: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=95: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=96: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=96: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=97: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=97: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=98: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=98: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=99: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=99: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=100: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=100: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=101: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=101: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=102: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=103: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=103: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=104: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=105: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=106: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=107: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=110: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=111: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=112: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=113: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=113: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=114: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=115: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=118: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=121: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=122 (Fart): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=123: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=124: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=125: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=126: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=126: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=126: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=127: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=129: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=130 (Galactic Federation President): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=133 (Garblovian): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=134: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=135: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=137: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=138: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=140: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=142: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=143: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=146: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=147: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=148: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=149: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=151: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=152: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=153: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=153: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=155: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=156: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=157: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=157: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=158: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=160: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=164: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=164: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=165: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=166: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=167: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=169: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=170: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=171: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=172: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=173: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=174: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=175: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=176: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=177: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=179: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=181: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=182: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=183: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=185: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=186: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=187: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=187: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=189: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=194: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=195: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=196 (Krombopulos Michael): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=199: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=200: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=200: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=201: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=204: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=208: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=209: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=209: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=210: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=214: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=215: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=216: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=217: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=218: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=218: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=219: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=219: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=220: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=222: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=223: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=224: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=227: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=228: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=229: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=231: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=231: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=232: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=233: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=234: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=235: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=237: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=239: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=240: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=241: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=242: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=244: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=245: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=246: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=247: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=247 (Amy Poopybutthole): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=249: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=249: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=249 (Mrs. Sanchez): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=251: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=252: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=253: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=253: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=255: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=256: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=257: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=258: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=260: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=261: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=261: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=262: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=265: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=266: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=267: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=268: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=271: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=272: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=274: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=274: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=275: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=276: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=277: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=278: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=279: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=281: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=282: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=283: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=284: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=284: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=285: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=286: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=287: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=288: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=289: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=290: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=291: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=292: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=293: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=294: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=295: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=298: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=298: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=299: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=299: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=300: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=302: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=303: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=308: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=310: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=312: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=312: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=313: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=314: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=315: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=316: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=317: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=318: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=319: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=320: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=320: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=321: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=322: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=323: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=325: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=327: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=328: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=329 (Snuffles (Snowball)): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=330: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=330: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=331: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=332: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=334: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=335: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=338: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=339: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=341: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=342: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=343: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=344: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=345: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=346: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=346: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=347: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=349: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=349 (The Scientist Formerly Known as Rick): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=350: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=350: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=351: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=351: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=354: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=356: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=359: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=359: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=362: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=364: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=365: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=368: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=368 (Truth Tortoise): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=369: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=370: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=373: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=375: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=377: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=378: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=379: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=379: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=380: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=380: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=380 (Unknown Rick): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=381 (Woman Rick): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=382: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=383: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=384: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=385: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=385: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=387: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=389: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=392: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=394: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=395: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=401: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=402: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=405: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=406: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=407: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=408: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=410: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=411: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=412: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=412: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=413: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=414: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=415: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=417: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=423: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=433: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=433 (Doopidoo): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=434: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=434: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Postava ID=434 (Super Weird Rick): chybějící nebo nevalidní location URL
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=435: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=436: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=436: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=437: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=438: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=439: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=440: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=441: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=442: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=443: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=444: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=445: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=446: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=452: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=454: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=454: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=455: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=457: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=458: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=458: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=459: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=461: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=462: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=462: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=463: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=464: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=465: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=466: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=467: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=468: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=469: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=469: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=470: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=471: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=473: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=474: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=475: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=477: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=478: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=479: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=480: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=481: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=481: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=482: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=483: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=484: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=485: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=486: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=487: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=488: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=489: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=490: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=491: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=492: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=492: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=493: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=494: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=495: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=496: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=498: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=499: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=500: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=509: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=509: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=510: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=511: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=512: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=513: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=514: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=517: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=522: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=523: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=523: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=523: pole 'gender' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=524: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=526: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=530: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=531: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=532: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=534: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=535: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=536: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=537: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=538: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=539: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=540: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=541: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=542: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=544: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=545: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=547: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=549: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=551: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=552: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=554: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=555: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=561: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=563: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=564: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=570: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=572: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=576: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=577: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=583: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=584: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=585: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=586: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=588: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=590: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=590: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=591: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=591: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=603: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=611: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=614: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=618: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=627: pole 'species' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=645: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=648: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=649: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=650: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=651: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=652: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=653: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=653: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=654: pole 'status' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=654: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=655: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=656: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=657: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=658: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=659: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | WARNING  | validator | Postava ID=660: pole 'type' obsahuje 'unknown' hodnotu
-2026-03-09 16:21:55 | INFO     | validator | Validace postav dokončena: 660 validních z 660, 0 duplicit, 474 anomálií, 21 bez location URL, 0 s broken reference
-2026-03-09 16:21:55 | INFO     | validator | Kompletní validace dat dokončena
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | SHRNUTÍ VALIDACE DAT
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | Celkem postav: 660
-2026-03-09 16:21:55 | INFO     | __main__ | Celkem lokací: 126
-2026-03-09 16:21:55 | INFO     | __main__ | Postavy s 'unknown' status: 78
-2026-03-09 16:21:55 | INFO     | __main__ | Postavy s 'unknown' species: 10
-2026-03-09 16:21:55 | INFO     | __main__ | Postavy bez location URL: 21
-2026-03-09 16:21:55 | INFO     | __main__ | Lokace s 'unknown' dimension: 31
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | KROK 3/4: Načítání dat do SQLite databáze
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | loader | Inicializace databáze: C:\Users\Vinci\Desktop\ukol2\rick_and_morty.db
-2026-03-09 16:21:55 | INFO     | loader | Databáze úspěšně inicializována: rick_and_morty.db
-2026-03-09 16:21:55 | INFO     | loader | Zahájení nahrávání všech dat do databáze
-2026-03-09 16:21:55 | INFO     | loader | Nahrávání 126 lokací do databáze
-2026-03-09 16:21:55 | INFO     | loader | Nahrávání lokací dokončeno: 126 nových, 0 duplicit, 0 chyb
-2026-03-09 16:21:55 | INFO     | loader | Nahrávání 660 postav do databáze
-2026-03-09 16:21:55 | INFO     | loader | Nahrávání postav dokončeno: 660 nových, 0 duplicit, 0 chyb, 21 bez validní lokace
-2026-03-09 16:21:55 | INFO     | loader | Nahrávání dat dokončeno: 126 nových lokací (0 duplicit), 660 nových postav (0 duplicit)
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | VÝSLEDKY NAHRÁVÁNÍ DO DATABÁZE
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | LOKACE:
-2026-03-09 16:21:55 | INFO     | __main__ |   - Nově vloženo: 126
-2026-03-09 16:21:55 | INFO     | __main__ |   - Preskočeno (duplicitní): 0
-2026-03-09 16:21:55 | INFO     | __main__ |   - Chyby: 0
-2026-03-09 16:21:55 | INFO     | __main__ | POSTAVY:
-2026-03-09 16:21:55 | INFO     | __main__ |   - Nově vloženo: 660
-2026-03-09 16:21:55 | INFO     | __main__ |   - Preskočeno (duplicitní): 0
-2026-03-09 16:21:55 | INFO     | __main__ |   - Chyby: 0
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | KROK 4/4: Kontrola integrity databáze
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | KONTROLA INTEGRITY DATABÁZE
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | Všechny postavy mají validní odkaz na lokaci
-2026-03-09 16:21:55 | INFO     | loader | Detekováno 0 duplicitních jmen lokací a 34 duplicitních jmen postav
-2026-03-09 16:21:55 | INFO     | __main__ | Žádná duplicitní jména lokací
-2026-03-09 16:21:55 | INFO     | __main__ | Duplicitní jména postav (34):
-2026-03-09 16:21:55 | INFO     | __main__ |   - 'Abradolf Lincler': 2 výskytů
-2026-03-09 16:21:55 | INFO     | __main__ |   - 'Anchosnake': 2 výskytů
-2026-03-09 16:21:55 | INFO     | __main__ |   - 'Beth Smith': 4 výskytů
-2026-03-09 16:21:55 | INFO     | __main__ |   - 'Bill': 2 výskytů
-2026-03-09 16:21:55 | INFO     | __main__ |   - 'Birdperson': 2 výskytů
-2026-03-09 16:21:55 | INFO     | __main__ | ------------------------------------------------------------
-2026-03-09 16:21:55 | INFO     | __main__ | ============================================================
-2026-03-09 16:21:55 | INFO     | __main__ | EL PIPELINE ÚSPĚŠNĚ DOKONČENA
-2026-03-09 16:21:55 | INFO     | __main__ | ============================================================
-2026-03-09 16:21:55 | INFO     | __main__ | FINÁLNÍ POČTY ZÁZNAMŮ V DATABÁZI:
-2026-03-09 16:21:55 | INFO     | __main__ |   - Lokace: 126
-2026-03-09 16:21:55 | INFO     | __main__ |   - Postavy: 660
-2026-03-09 16:21:55 | INFO     | __main__ |   - Celkem: 786
-2026-03-09 16:21:55 | INFO     | __main__ | ============================================================
-2026-03-09 16:21:55 | INFO     | loader | Databázové připojení uzavřeno
-2026-03-09 16:21:55 | INFO     | __main__ | Script ukončen úspěšně
+2026-03-09 17:09:05 | INFO     | __main__ | Logování do souboru: C:\Users\Vinci\Desktop\ukol2\el_pipeline.log
+2026-03-09 17:09:05 | INFO     | __main__ | Logging inicializován s úrovní INFO
+2026-03-09 17:09:05 | INFO     | __main__ | Spuštění z adresáře: C:\Users\Vinci\Desktop\ukol2
+2026-03-09 17:09:05 | INFO     | __main__ | Verze Pythonu: 3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]
+2026-03-09 17:09:05 | INFO     | __main__ | ============================================================
+2026-03-09 17:09:05 | INFO     | __main__ | Zahájení EL pipeline pro Rick & Morty data
+2026-03-09 17:09:05 | INFO     | __main__ | ============================================================
+2026-03-09 17:09:05 | INFO     | __main__ | KROK 1/4: Extrakce dat z Rick & Morty API
+2026-03-09 17:09:05 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:05 | INFO     | extractor | Zahájení kompletní extrakce dat z Rick & Morty API
+2026-03-09 17:09:05 | INFO     | extractor | Zahájení extrakce entity 'location' z URL: https://rickandmortyapi.com/api/location
+2026-03-09 17:09:07 | INFO     | extractor | Dosaženo konce paginace pro 'location' po 7 stránkách
+2026-03-09 17:09:07 | INFO     | extractor | Extrakce 'location' dokončena: celkem 126 záznamů
+2026-03-09 17:09:07 | INFO     | extractor | Zahájení extrakce entity 'character' z URL: https://rickandmortyapi.com/api/character
+2026-03-09 17:09:17 | ERROR    | extractor | HTTP chyba 0 pro URL: https://rickandmortyapi.com/api/character?page=34
+2026-03-09 17:09:17 | ERROR    | extractor | Extrakce 'character' přerušena - nepodařilo se získat response
+2026-03-09 17:09:17 | INFO     | extractor | Extrakce 'character' dokončena: celkem 660 záznamů
+2026-03-09 17:09:17 | INFO     | extractor | Kompletní extrakce dokončena: 660 postav, 126 lokací
+2026-03-09 17:09:17 | INFO     | __main__ | KROK 2/4: Validace extrahovaných dat
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | validator | Zahájení kompletní validace dat
+2026-03-09 17:09:17 | INFO     | validator | Zahájení validace 126 lokací
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=2: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=3: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=4: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=6: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=7: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=10: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=11: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=13: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=15: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=16: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=25: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=27: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=30: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=36: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=37: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=38: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=39: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=40: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=41: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=44: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=53: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=54: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=57: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=65: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=66: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=68: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=73: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=75: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Lokace ID=76: pole 'dimension' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Validace lokací dokončena: 126 validních z 126, 0 duplicit, 29 anomálií
+2026-03-09 17:09:17 | INFO     | validator | Množina validních ID lokací: 126 záznamů
+2026-03-09 17:09:17 | INFO     | validator | Zahájení validace 660 postav
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=7: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=13: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=13: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=14: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=15: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=19: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=19 (Antenna Rick): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=20: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=21: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=22: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=23: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=25: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=30 (Baby Poopybutthole): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=35: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=36: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=36 (Beta-Seven): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=42: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=46: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=46 (Bill): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=49: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=53: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=55: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=57 (Borpocian): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=60 (Calypso): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=62 (Canklanker Thom): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=64: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=70 (Concerto): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=71: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=75: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=79: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=82: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=83: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=95: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=95: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=96: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=97: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=98: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=99: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=100: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=101: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=103: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=104: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=106: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=113: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=114: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=122 (Fart): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=125: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=126: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=126: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=130 (Galactic Federation President): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=133 (Garblovian): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=142: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=148: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=151: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=152: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=153: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=157: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=157: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=158: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=164: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=167: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=187: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=194: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=196 (Krombopulos Michael): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=199: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=200: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=209: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=218: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=219: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=231: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=242: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=247 (Amy Poopybutthole): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=249: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=249 (Mrs. Sanchez): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=253: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=253: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=261: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=262: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=265: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=266: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=274: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=276: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=282: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=284: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=298: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=299: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=308: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=310: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=312: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=313: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=319: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=320: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=329 (Snuffles (Snowball)): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=330: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=331: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=346: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=349 (The Scientist Formerly Known as Rick): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=350: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=351: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=359: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=362: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=364: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=368: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=368 (Truth Tortoise): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=369: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=377: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=378: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=379: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=380: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=380 (Unknown Rick): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=381 (Woman Rick): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=385: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=387: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=395: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=406: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=411: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=412: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=412: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=413: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=423: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=433: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=433 (Doopidoo): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=434: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Postava ID=434 (Super Weird Rick): chybějící nebo nevalidní location URL
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=435: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=436: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=454: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=458: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=462: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=469: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=481: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=492: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=509: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=517: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=522: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=523: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=523: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=523: pole 'gender' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=524: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=572: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=576: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=577: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=583: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=590: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=591: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=603: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=611: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=614: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=618: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=627: pole 'species' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=645: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=653: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | WARNING  | validator | Postava ID=654: pole 'status' obsahuje 'unknown' hodnotu
+2026-03-09 17:09:17 | INFO     | validator | Validace postav dokončena: 660 validních z 660, 0 duplicit, 132 anomálií, 21 bez location URL, 0 s broken reference
+2026-03-09 17:09:17 | INFO     | validator | Kompletní validace dat dokončena
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | SHRNUTÍ VALIDACE DAT
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | Celkem postav: 660
+2026-03-09 17:09:17 | INFO     | __main__ | Celkem lokací: 126
+2026-03-09 17:09:17 | INFO     | __main__ | Postavy s 'unknown' status: 78
+2026-03-09 17:09:17 | INFO     | __main__ | Postavy s 'unknown' species: 10
+2026-03-09 17:09:17 | INFO     | __main__ | Postavy bez location URL: 21
+2026-03-09 17:09:17 | INFO     | __main__ | Lokace s 'unknown' dimension: 29
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | WARNING  | __main__ | Vysoký počet postav s 'unknown' status: 78 (11%)
+2026-03-09 17:09:17 | WARNING  | __main__ | Vysoký počet lokací s 'unknown' dimension: 29 (23%)
+2026-03-09 17:09:17 | INFO     | __main__ | KROK 3/4: Načítání dat do SQLite databáze
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | loader | Inicializace databáze: C:\Users\Vinci\Desktop\ukol2\rick_and_morty.db
+2026-03-09 17:09:17 | INFO     | loader | Databáze úspěšně inicializována: rick_and_morty.db
+2026-03-09 17:09:17 | INFO     | loader | Zahájení nahrávání všech dat do databáze
+2026-03-09 17:09:17 | INFO     | loader | Nahrávání 126 lokací do databáze
+2026-03-09 17:09:17 | INFO     | loader | Nahrávání lokací dokončeno: 126 nových, 0 duplicit, 0 chyb
+2026-03-09 17:09:17 | INFO     | loader | Nahrávání 660 postav do databáze
+2026-03-09 17:09:17 | INFO     | loader | Nahrávání postav dokončeno: 660 nových, 0 duplicit, 0 chyb, 21 bez validní lokace
+2026-03-09 17:09:17 | INFO     | loader | Nahrávání dat dokončeno: 126 nových lokací (0 duplicit), 660 nových postav (0 duplicit)
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | VÝSLEDKY NAHRÁVÁNÍ DO DATABÁZE
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | LOKACE:
+2026-03-09 17:09:17 | INFO     | __main__ |   - Nově vloženo: 126
+2026-03-09 17:09:17 | INFO     | __main__ |   - Preskočeno (duplicitní): 0
+2026-03-09 17:09:17 | INFO     | __main__ |   - Chyby: 0
+2026-03-09 17:09:17 | INFO     | __main__ | POSTAVY:
+2026-03-09 17:09:17 | INFO     | __main__ |   - Nově vloženo: 660
+2026-03-09 17:09:17 | INFO     | __main__ |   - Preskočeno (duplicitní): 0
+2026-03-09 17:09:17 | INFO     | __main__ |   - Chyby: 0
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | KROK 4/4: Kontrola integrity databáze
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | KONTROLA INTEGRITY DATABÁZE
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | Všechny postavy mají validní odkaz na lokaci
+2026-03-09 17:09:17 | INFO     | loader | Detekováno 0 duplicitních jmen lokací a 34 duplicitních jmen postav
+2026-03-09 17:09:17 | INFO     | __main__ | Žádná duplicitní jména lokací
+2026-03-09 17:09:17 | INFO     | __main__ | Duplicitní jména postav (34):
+2026-03-09 17:09:17 | INFO     | __main__ |   - 'Abradolf Lincler': 2 výskytů
+2026-03-09 17:09:17 | INFO     | __main__ |   - 'Anchosnake': 2 výskytů
+2026-03-09 17:09:17 | INFO     | __main__ |   - 'Beth Smith': 4 výskytů
+2026-03-09 17:09:17 | INFO     | __main__ |   - 'Bill': 2 výskytů
+2026-03-09 17:09:17 | INFO     | __main__ |   - 'Birdperson': 2 výskytů
+2026-03-09 17:09:17 | INFO     | __main__ | ------------------------------------------------------------
+2026-03-09 17:09:17 | INFO     | __main__ | ============================================================
+2026-03-09 17:09:17 | INFO     | __main__ | EL PIPELINE ÚSPĚŠNĚ DOKONČENA
+2026-03-09 17:09:17 | INFO     | __main__ | ============================================================
+2026-03-09 17:09:17 | INFO     | __main__ | FINÁLNÍ POČTY ZÁZNAMŮ V DATABÁZI:
+2026-03-09 17:09:17 | INFO     | __main__ |   - Lokace: 126
+2026-03-09 17:09:17 | INFO     | __main__ |   - Postavy: 660
+2026-03-09 17:09:17 | INFO     | __main__ |   - Celkem: 786
+2026-03-09 17:09:17 | INFO     | __main__ | ============================================================
+2026-03-09 17:09:17 | INFO     | loader | Databázové připojení uzavřeno
+2026-03-09 17:09:17 | INFO     | __main__ | Script ukončen úspěšně

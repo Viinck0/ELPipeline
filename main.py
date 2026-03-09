@@ -79,7 +79,7 @@ def setup_logging(log_level: int = logging.INFO, log_file: Path | None = None) -
 
 def report_validation_summary(summary: dict[str, Any]) -> None:
     """
-    Vypíše shrnutí validace dat.
+    Vypíše shrnutí validace dat včetně detekovaných anomálií.
 
     Args:
         summary: Dictionary se shrnutím validace.
@@ -96,6 +96,18 @@ def report_validation_summary(summary: dict[str, Any]) -> None:
     logger.info(f"Postavy bez location URL: {summary['characters_without_location']}")
     logger.info(f"Lokace s 'unknown' dimension: {summary['locations_with_unknown_dimension']}")
     logger.info("-" * 60)
+
+    # Varování pokud je vysoký počet anomálií
+    if summary['characters_with_unknown_status'] > 50:
+        logger.warning(
+            f"Vysoký počet postav s 'unknown' status: "
+            f"{summary['characters_with_unknown_status']} ({summary['characters_with_unknown_status'] * 100 // max(summary['total_characters'], 1)}%)"
+        )
+    if summary['locations_with_unknown_dimension'] > 20:
+        logger.warning(
+            f"Vysoký počet lokací s 'unknown' dimension: "
+            f"{summary['locations_with_unknown_dimension']} ({summary['locations_with_unknown_dimension'] * 100 // max(summary['total_locations'], 1)}%)"
+        )
 
 
 def report_load_results(

@@ -23,7 +23,10 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 # Hodnoty považované za sémantické anomálie
-UNKNOWN_VALUES: frozenset[str] = frozenset({"unknown", "Unknown", "UNKNOWN", ""})
+UNKNOWN_VALUES: frozenset[str] = frozenset({"unknown", "Unknown", "UNKNOWN"})
+
+# Prázdné řetězce jsou také považovány za anomálii, ale pouze v určitých polích
+EMPTY_VALUE_FIELDS: frozenset[str] = frozenset({"status", "species", "name"})
 
 # Pole, která by neměla obsahovat "unknown" hodnoty
 CRITICAL_FIELDS: frozenset[str] = frozenset({"status", "species", "dimension"})
@@ -332,7 +335,7 @@ def _check_semantic_anomalies(record: dict[str, Any], record_type: str) -> list[
     Detekuje sémantické anomálie v kritických polích záznamu.
 
     Hledá hodnoty "unknown" v polích jako status, species, dimension.
-    Kontroluje také prázdné řetězce a podezřelé hodnoty.
+    Kontroluje také prázdné řetězce v kritických polích a podezřelé hodnoty.
 
     Args:
         record: Záznam ke kontrole.
@@ -360,11 +363,18 @@ def _check_semantic_anomalies(record: dict[str, Any], record_type: str) -> list[
                 dimension_value: str | None = value.get("dimension")
                 if dimension_value and dimension_value.lower() in {v.lower() for v in UNKNOWN_VALUES}:
                     anomalies.append(f"pole '{field}.dimension' obsahuje 'unknown' hodnotu")
+                # Kontrola prázdného řetězce v dimension
+                if dimension_value == "":
+                    anomalies.append(f"pole '{field}.dimension' je prázdné")
             continue
 
-        # Kontrola na "unknown" hodnoty
+        # Kontrola na "unknown" hodnoty (nepoužíváme pro type a gender - tam je "" běžné)
         if value.lower() in {v.lower() for v in UNKNOWN_VALUES}:
             anomalies.append(f"pole '{field}' obsahuje 'unknown' hodnotu")
+
+        # Kontrola prázdného řetězce pouze v kritických polích (status, species, name)
+        if value == "" and field in EMPTY_VALUE_FIELDS:
+            anomalies.append(f"pole '{field}' je prázdné")
 
         # Kontrola na podezřelé hodnoty (příliš dlouhé, speciální znaky)
         if len(value) > 500:

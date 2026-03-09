@@ -20,7 +20,8 @@ logger = logging.getLogger(__name__)
 # Konfigurace API
 BASE_URL: str = "https://rickandmortyapi.com/api"
 RATE_LIMIT_DELAY: float = 0.2
-REQUEST_TIMEOUT: int = 30
+REQUEST_TIMEOUT: int = 15  # Snížený timeout pro rychlejší detekci chyb
+MAX_RETRIES: int = 3  # Maximální počet pokusů o request
 
 
 def fetch_paginated_data(endpoint: str) -> list[dict[str, Any]]:
@@ -88,10 +89,10 @@ def fetch_paginated_data(endpoint: str) -> list[dict[str, Any]]:
 
 def _make_request(url: str) -> requests.Response | None:
     """
-    Provede HTTP GET request s robustním error handlingem.
+    Provede HTTP GET request s robustním error handlingem a retry logikou.
 
     Ošetřuje síťové výpadky, timeouty a HTTP chyby.
-    V případě chyby loguje detailní informace a vrací None.
+    Implementuje retry mechanismus pro dočasné chyby.
 
     Args:
         url: Cílová URL pro HTTP request.
@@ -99,31 +100,46 @@ def _make_request(url: str) -> requests.Response | None:
     Returns:
         Response objekt při úspěchu, None při chybě.
     """
-    try:
-        response: requests.Response = requests.get(
-            url=url,
-            timeout=REQUEST_TIMEOUT,
-            headers={"User-Agent": "RickMorty-EL-Pipeline/1.0"}
-        )
-        response.raise_for_status()
-        return response
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response: requests.Response = requests.get(
+                url=url,
+                timeout=REQUEST_TIMEOUT,
+                headers={"User-Agent": "RickMorty-EL-Pipeline/1.0"}
+            )
+            response.raise_for_status()
+            return response
 
-    except Timeout:
-        logger.error(f"Request timeout pro URL: {url} (timeout={REQUEST_TIMEOUT}s)")
-        return None
+        except Timeout:
+            logger.warning(f"Timeout (pokusek {attempt}/{MAX_RETRIES}) pro URL: {url}")
+            if attempt == MAX_RETRIES:
+                logger.error(f"Request timeout pro URL: {url} (timeout={REQUEST_TIMEOUT}s)")
+                return None
 
-    except ConnectionError as e:
-        logger.error(f"Chyba připojení pro URL: {url} - {e}")
-        return None
+        except ConnectionError as e:
+            logger.warning(f"Chyba připojení (pokusek {attempt}/{MAX_RETRIES}) pro URL: {url} - {e}")
+            if attempt == MAX_RETRIES:
+                logger.error(f"Chyba připojení pro URL: {url} - {e}")
+                return None
 
-    except HTTPError as e:
-        status_code: int = e.response.status_code if e.response else 0
-        logger.error(f"HTTP chyba {status_code} pro URL: {url}")
-        return None
+        except HTTPError as e:
+            status_code: int = e.response.status_code if e.response else 0
+            # 429 Too Many Requests - retry s delším zpožděním
+            if status_code == 429 and attempt < MAX_RETRIES:
+                retry_delay: float = RATE_LIMIT_DELAY * (2 ** attempt)
+                logger.warning(f"Rate limit (429), čekám {retry_delay}s před dalším pokusem")
+                time.sleep(retry_delay)
+                continue
+            logger.error(f"HTTP chyba {status_code} pro URL: {url}")
+            return None
 
-    except RequestException as e:
-        logger.error(f"Obecná chyba requestu pro URL: {url} - {e}")
-        return None
+        except RequestException as e:
+            logger.warning(f"Obecná chyba requestu (pokusek {attempt}/{MAX_RETRIES}) pro URL: {url} - {e}")
+            if attempt == MAX_RETRIES:
+                logger.error(f"Obecná chyba requestu pro URL: {url} - {e}")
+                return None
+
+    return None
 
 
 def _validate_response(response: requests.Response, endpoint: str, page: int) -> dict[str, Any] | None:
