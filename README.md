@@ -482,10 +482,6 @@ Tato sekce explicitně odpovídá na požadavky zadaní:
 
 ---
 
-## Koncept Enterprise přesah
-
-Záměrně jsem tento skript udržel lehký a čistý pro snadné spuštění a hodnocení. Nicméně vzhledem k tomu, že HECON pracuje v energetice s citlivými daty, připravil jsem i dodatečný koncepční návrh produkční architektury. Detaily naleznete v přiloženém dokumentu Enterprise_Architecture_Concept.md
-
 ## 📄 Licence
 
 Tento projekt je vytvořen pro vzdělávací účely k úkolovému zadání od firmy Hecon. Data pocházejí z veřejného Rick & Morty API.
