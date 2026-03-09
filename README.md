@@ -401,22 +401,26 @@ WARNING | Pipeline pokračuje s částečně staženými daty (graceful degradat
 
 ## 🧪 Testování
 
-### Manuální testování
+### Manuální testování (Copy-paste příkazy)
 
-```bash
-# 1. Čistý start
-rm rick_and_morty.db
+```cmd
+del rick_and_morty.db
+| Smaže existující databázi pro čistý start | ✅ Ano (pokud DB existuje, smaže ji; pokud ne, příkaz selže ale neblokuje další kroky) |
 
-# 2. Spuštění pipeline
 python main.py
+| Spustí celé EL pipeline – extrahuje data z Rick & Morty API, validuje je a nahraje do SQLite databáze | ❌ Nevyžaduje DB – naopak, DB vytvoří |
 
-# 3. Ověření databáze
-sqlite3 rick_and_morty.db "SELECT COUNT(*) FROM locations;"
-sqlite3 rick_and_morty.db "SELECT COUNT(*) FROM characters;"
+python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Locations:', conn.execute('SELECT COUNT(*) FROM locations').fetchone()[0])"
+| Připojí se k databázi a vypíše počet lokací | ❌ Ne – vyžaduje existující `rick_and_morty.db` |
 
-# 4. Kontrola integrity
-sqlite3 rick_and_morty.db "PRAGMA integrity_check;"
+python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Characters:', conn.execute('SELECT COUNT(*) FROM characters').fetchone()[0])"
+| Připojí se k databázi a vypíše počet postav | ❌ Ne – vyžaduje existující `rick_and_morty.db` |
+
+python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Integrity:', conn.execute('PRAGMA integrity_check').fetchone()[0])"
+| Zkontroluje integritu databáze (vrací `ok` pokud je vše v pořádku) | ❌ Ne – vyžaduje existující `rick_and_morty.db` |
 ```
+
+**Poznámka:** Příkazy pro ověření databáze (poslední 3) fungují **až po spuštění** `python main.py`, které databázi vytvoří a naplní daty.
 
 ### Ukázkové dotazy
 
