@@ -110,10 +110,6 @@ Tento diagram znázorňuje tok dat od surové extrakce až po business-ready vý
 
 ### 1. Klonování nebo stažení projektu
 
-```bash
-cd c:\Users\Vinci\Desktop\ukol2
-```
-
 ### 2. Vytvoření virtuálního prostředí (doporučeno)
 
 ```bash
