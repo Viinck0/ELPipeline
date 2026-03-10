@@ -77,6 +77,32 @@ def setup_logging(log_level: int = logging.INFO, log_file: Path | None = None) -
     logger.info("Logging inicializován s úrovní %s", logging.getLevelName(log_level))
 
 
+def _check_data_completeness(summary: dict[str, Any]) -> None:
+    """
+    Kontroluje, zda byla extrahována očekávaná data.
+
+    Args:
+        summary: Dictionary se shrnutím validace.
+    """
+    logger: logging.Logger = logging.getLogger(__name__)
+    
+    expected_characters: int = 800  # Approximální očekávaný počet
+    expected_locations: int = 125
+    
+    actual_characters: int = summary['total_characters']
+    actual_locations: int = summary['total_locations']
+    
+    character_completeness: float = actual_characters / expected_characters if expected_characters > 0 else 0
+    location_completeness: float = actual_locations / expected_locations if expected_locations > 0 else 0
+    
+    logger.info(f"Completeness: Characters {character_completeness:.1%} ({actual_characters}/{expected_characters}), Locations {location_completeness:.1%} ({actual_locations}/{expected_locations})")
+    
+    if character_completeness < 0.8:
+        logger.warning(f"Nízká completeness postav: {actual_characters}/{expected_characters} ({character_completeness:.1%})")
+    if location_completeness < 0.8:
+        logger.warning(f"Nízká completeness lokací: {actual_locations}/{expected_locations} ({location_completeness:.1%})")
+
+
 def report_validation_summary(summary: dict[str, Any]) -> None:
     """
     Vypíše shrnutí validace dat včetně detekovaných anomálií.
@@ -96,6 +122,9 @@ def report_validation_summary(summary: dict[str, Any]) -> None:
     logger.info(f"Postavy bez location URL: {summary['characters_without_location']}")
     logger.info(f"Lokace s 'unknown' dimension: {summary['locations_with_unknown_dimension']}")
     logger.info("-" * 60)
+
+    # Kontrola completeness dat
+    _check_data_completeness(summary)
 
     # Varování pokud je vysoký počet anomálií
     if summary['characters_with_unknown_status'] > 50:

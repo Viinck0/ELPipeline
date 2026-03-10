@@ -358,14 +358,7 @@ def _check_semantic_anomalies(record: dict[str, Any], record_type: str) -> list[
             continue
 
         if not isinstance(value, str):
-            # Pro location je dimension vnořený objekt
-            if isinstance(value, dict):
-                dimension_value: str | None = value.get("dimension")
-                if dimension_value and dimension_value.lower() in {v.lower() for v in UNKNOWN_VALUES}:
-                    anomalies.append(f"pole '{field}.dimension' obsahuje 'unknown' hodnotu")
-                # Kontrola prázdného řetězce v dimension
-                if dimension_value == "":
-                    anomalies.append(f"pole '{field}.dimension' je prázdné")
+            # Pro location je field v některých případech objekt s 'location' klíčem
             continue
 
         # Kontrola na "unknown" hodnoty (nepoužíváme pro type a gender - tam je "" běžné)

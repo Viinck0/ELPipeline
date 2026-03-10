@@ -19,9 +19,9 @@ logger = logging.getLogger(__name__)
 
 # Konfigurace API
 BASE_URL: str = "https://rickandmortyapi.com/api"
-RATE_LIMIT_DELAY: float = 0.2
-REQUEST_TIMEOUT: int = 15  # Snížený timeout pro rychlejší detekci chyb
-MAX_RETRIES: int = 3  # Maximální počet pokusů o request
+RATE_LIMIT_DELAY: float = 0.5  # Zvýšeno z 0.2s na 0.5s pro snížení rate limitů (HTTP 429)
+REQUEST_TIMEOUT: int = 30  # Zvýšeno z 15s na 30s pro stabilnější připojení
+MAX_RETRIES: int = 5  # Zvýšeno z 3 na 5 pro lepší handling dočasných chyb
 
 
 def fetch_paginated_data(endpoint: str) -> list[dict[str, Any]]:
@@ -123,11 +123,18 @@ def _make_request(url: str) -> requests.Response | None:
                 return None
 
         except HTTPError as e:
-            status_code: int = e.response.status_code if e.response else 0
-            # 429 Too Many Requests - retry s delším zpožděním
+            # Safely extract status code from response
+            status_code: int = 0
+            if e.response is not None:
+                status_code = e.response.status_code
+            else:
+                logger.error(f"HTTPError bez response objektu pro URL: {url}")
+                return None
+
+            # 429 Too Many Requests - retry s exponenciálním backoffem
             if status_code == 429 and attempt < MAX_RETRIES:
-                retry_delay: float = RATE_LIMIT_DELAY * (2 ** attempt)
-                logger.warning(f"Rate limit (429), čekám {retry_delay}s před dalším pokusem")
+                retry_delay: float = 2.0 ** attempt  # Exponenciální backoff: 2s, 4s, 8s...
+                logger.warning(f"Rate limit (429), čekám {retry_delay}s před dalším pokusem (pokus {attempt}/{MAX_RETRIES})")
                 time.sleep(retry_delay)
                 continue
             logger.error(f"HTTP chyba {status_code} pro URL: {url}")
@@ -159,7 +166,7 @@ def _validate_response(response: requests.Response, endpoint: str, page: int) ->
     """
     try:
         data: dict[str, Any] = response.json()
-    except ValueError as e:
+    except (ValueError, Exception) as e:
         logger.error(f"Nevalidní JSON na stránce {page} pro '{endpoint}': {e}")
         return None
 
