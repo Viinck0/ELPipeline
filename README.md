@@ -212,8 +212,9 @@ CREATE INDEX idx_characters_name ON characters(name);
 
 ```python
 BASE_URL: str = "https://rickandmortyapi.com/api"
-RATE_LIMIT_DELAY: float = 0.2  # Zpoždění mezi requesty (sekundy)
+RATE_LIMIT_DELAY: float = 0.5  # Zpoždění mezi requesty (sekundy)
 REQUEST_TIMEOUT: int = 30      # Timeout pro HTTP requesty
+MAX_RETRIES: int = 5           # 5 pro lepší handling dočasných chyb
 ```
 
 ### Konstanty v `validator.py`
