@@ -93,7 +93,7 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 
 Tento diagram znázorňuje tok dat od surové extrakce až po business-ready výstupy:
 
-![schema](https://github.com/user-attachments/assets/fa4cd573-13f5-4b2a-99b9-88a2332bb1fb)
+![schema](https://github.com/user-attachments/assets/cdb915de-ea83-479b-bd79-eb141d25dc5c)
 
 "Výše uvedený diagram pokrývá technickou EL a čistící vrstvu. Požadovaný Business-ready output (KPIs a analytické pohledy) je realizován formou předpřipravených analytických dotazů (viz ukázkové dotazy v tomto README), které slouží jako přímý podklad pro vizualizační nástroje (např. Grafana / PowerBI)."
 
