@@ -2,7 +2,7 @@
 
 Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick & Morty API** a jejich ukládání do **SQLite databáze**.
 
-## 📋 Obsah
+## Obsah
 
 - [Funkce](#funkce)
 - [Architektura](#architektura)
@@ -19,7 +19,7 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 
 ---
 
-## 🚀 Funkce
+## Funkce
 
 ### Extrakce dat
 - **Paginace**: Automatické procházení všech stránek API pomocí `while` cyklu
@@ -47,7 +47,7 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 
 ---
 
-## 🏗️ Architektura
+## Architektura
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -86,7 +86,7 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 
 ---
 
-## 📊 Transformační Diagram
+## Transformační Diagram
 
 Tento diagram znázorňuje tok dat od surové extrakce až po business-ready výstupy:
 
@@ -96,7 +96,7 @@ Tento diagram znázorňuje tok dat od surové extrakce až po business-ready vý
 
 ---
 
-## 📦 Požadavky
+## Požadavky
 
 - **Python**: 3.10 nebo vyšší
 - **Knihovny**:
@@ -106,7 +106,7 @@ Tento diagram znázorňuje tok dat od surové extrakce až po business-ready vý
 
 ---
 
-## 📥 Instalace
+## Instalace
 
 ### 1. Klonování nebo stažení projektu
 
@@ -130,7 +130,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Použití
+## Použití
 
 ### Základní spuštění
 
@@ -266,7 +266,7 @@ DB_PATH: Path = Path(__file__).parent / "rick_and_morty.db"
 
 ---
 
-## 📊 Příklady výstupu
+## Příklady výstupu
 
 ### Úspěšné spuštění
 
@@ -352,7 +352,7 @@ WARNING | Pipeline pokračuje s částečně staženými daty (graceful degradat
 
 ---
 
-## 🔧 Řešení problémů
+## Řešení problémů
 
 ### Problém: Chyba připojení k API
 
@@ -400,7 +400,7 @@ WARNING | Pipeline pokračuje s částečně staženými daty (graceful degradat
 
 ---
 
-## 🧪 Testování
+## Testování
 
 ### Manuální testování (Copy-paste příkazy)
 
@@ -482,7 +482,4 @@ Tato sekce explicitně odpovídá na požadavky zadaní:
 | Idempotence | ✅ INSERT OR IGNORE | ❌ Manuální deduplikace |
 
 ---
-
-## 📄 Licence
-
-Tento projekt je vytvořen pro vzdělávací účely k úkolovému zadání od firmy Hecon. Data pocházejí z veřejného Rick & Morty API.
+Tento projekt je vytvořen pro samo-vzdělávací účely. Data pocházejí z veřejného Rick & Morty API.
