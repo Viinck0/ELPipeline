@@ -23,9 +23,10 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 
 ### Extrakce dat
 - **Paginace**: Automatické procházení všech stránek API pomocí `while` cyklu
-- **Rate Limiting**: Zpoždění 0.2s mezi požadavky na ochranu externího serveru
+- **Rate Limiting**: Zpoždění 0.5s mezi požadavky na ochranu externího serveru
+- **Exponenciální Backoff**: Při rate limitu (HTTP 429) čeká 2s, 4s, 8s...
 - **Graceful Degradation**: Uložení extrahovaných dat i při chybě sítě
-- **Robustní error handling**: Ošetření timeoutů, výpadků připojení a HTTP chyb
+- **Robustní error handling**: Ošetření timeoutů, výpadků připojení a HTTP chyb s retry logikou
 
 ### Validace dat
 - **Detekce duplicit**: Identifikace duplicitních ID v extrahovaných datech
@@ -213,8 +214,8 @@ CREATE INDEX idx_characters_name ON characters(name);
 ```python
 BASE_URL: str = "https://rickandmortyapi.com/api"
 RATE_LIMIT_DELAY: float = 0.5  # Zpoždění mezi requesty (sekundy)
-REQUEST_TIMEOUT: int = 30      # Timeout pro HTTP requesty
-MAX_RETRIES: int = 5           # 5 pro lepší handling dočasných chyb
+REQUEST_TIMEOUT: int = 30      # Timeout pro HTTP requesty (sekundy)
+MAX_RETRIES: int = 5           # Maximální počet pokusů při chybě
 ```
 
 ### Konstanty v `validator.py`
@@ -386,8 +387,8 @@ WARNING | Pipeline pokračuje s částečně staženými daty (graceful degradat
 **Příčina:** Příliš rychlé požadavky
 
 **Řešení:**
-1. Zvyšte `RATE_LIMIT_DELAY` v `extractor.py` na 0.5 nebo více
-2. Implementujte exponenciální backoff pro opakované pokusy
+1. Zvyšte `RATE_LIMIT_DELAY` v `extractor.py` na 1.0 nebo více
+2. Exponenciální backoff je již implementován pro HTTP 429 chyby (2s, 4s, 8s...)
 
 ### Problém: Nevalidní JSON response
 
