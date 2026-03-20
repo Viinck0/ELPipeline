@@ -12,6 +12,7 @@ Tento soubor slouží jako entry point pro spuštění celého EL procesu.
 """
 
 import logging
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -317,8 +318,10 @@ def main() -> int:
     Returns:
         0 při úspěchu, 1 při chybě.
     """
-    # Volitelné: uložení logů do souboru
-    log_file: Path | None = Path(__file__).parent / "el_pipeline.log"
+    # Volitelné: uložení logů do souboru (lze přepsat přes LOG_FILE environment variable)
+    log_file: Path | None = Path(
+        os.getenv("LOG_FILE", str(Path(__file__).parent / "el_pipeline.log"))
+    )
 
     setup_logging(logging.INFO, log_file=log_file)
 

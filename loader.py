@@ -18,6 +18,7 @@ Bezpečnostní opatření:
 """
 
 import logging
+import os
 import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -25,8 +26,8 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-# Cesta k databázovému souboru
-DB_PATH: Path = Path(__file__).parent / "rick_and_morty.db"
+# Cesta k databázovému souboru (lze přepsat přes DB_PATH environment variable)
+DB_PATH: Path = Path(os.getenv("DB_PATH", str(Path(__file__).parent / "rick_and_morty.db")))
 
 # SQL schéma pro vytvoření tabulek
 SCHEMA_SQL: str = """

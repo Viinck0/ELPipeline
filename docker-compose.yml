@@ -1,0 +1,20 @@
+# Rick & Morty EL Pipeline - Docker Compose
+# Spuštění ETL pipeline v kontejneru s perzistentním úložištěm
+
+services:
+  el-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rick-morty-el-pipeline
+    volumes:
+      # Perzistentní úložiště pro databázi a logy
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DB_PATH=/app/data/rick_and_morty.db
+      - LOG_FILE=/app/data/el_pipeline.log
+    # Restart policy - nepokoušet se o restart po dokončení
+    restart: "no"
+    # Síť pro přístup k externímu API
+    network_mode: bridge
