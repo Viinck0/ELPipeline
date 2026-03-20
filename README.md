@@ -10,6 +10,8 @@ Extrakční a načítací (Extract & Load) pipeline pro stahování dat z **Rick
 - [Požadavky](#požadavky)
 - [Instalace](#instalace)
 - [Použití](#použití)
+  - [Spuštění přes Docker (doporučeno)](#spuštění-přes-docker-doporučeno)
+  - [Ruční spuštění s Pythonem](#ruční-spuštění-s-pythonem)
 - [Struktura databáze](#struktura-databáze)
 - [Konfigurace](#konfigurace)
 - [Logování](#logování)
@@ -99,6 +101,11 @@ Tento diagram znázorňuje tok dat od surové extrakce až po business-ready vý
 
 ## Požadavky
 
+### Pro spuštění s Dockerem (doporučeno)
+- **Docker**: 20.x nebo vyšší
+- **Docker Compose**: 2.x nebo vyšší
+
+### Pro ruční spuštění s Pythonem
 - **Python**: 3.10 nebo vyšší
 - **Knihovny**:
   - `requests` (≥2.31.0) - HTTP komunikace s API
@@ -111,7 +118,20 @@ Tento diagram znázorňuje tok dat od surové extrakce až po business-ready vý
 
 ### 1. Klonování nebo stažení projektu
 
-### 2. Vytvoření virtuálního prostředí (doporučeno)
+```bash
+git clone <repository-url>
+cd ELPipeline
+```
+
+### 2. Spuštění přes Docker (doporučeno)
+
+Pro spuštění s Dockerem není potřeba žádná další instalace. Pokračujte přímo na [Spuštění přes Docker](#spuštění-přes-docker-doporučeno).
+
+### 3. Ruční instalace s Pythonem
+
+Pokud nechcete používat Docker, nainstalujte závislosti lokálně:
+
+#### Vytvoření virtuálního prostředí (doporučeno)
 
 ```bash
 # Windows
@@ -123,7 +143,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Instalace závislostí
+#### Instalace závislostí
 
 ```bash
 pip install -r requirements.txt
@@ -133,13 +153,44 @@ pip install -r requirements.txt
 
 ## Použití
 
-### Základní spuštění
+### Spuštění přes Docker (doporučeno)
+
+#### 1. Build a spuštění
+
+```bash
+docker-compose up --build
+```
+
+#### 2. Čistý start (odstranění starého kontejneru)
+
+```bash
+docker-compose down
+docker-compose up --build
+```
+
+#### 3. Odstranění databáze pro čistý start
+
+```bash
+# Windows (PowerShell)
+Remove-Item -Force .\data\rick_and_morty.db -ErrorAction SilentlyContinue
+
+# Linux/Mac
+rm -f ./data/rick_and_morty.db
+```
+
+Při prvním spuštění Docker vytvoří adresář `data/` pro perzistentní úložiště databáze a logů.
+
+---
+
+### Ruční spuštění s Pythonem
+
+#### Základní spuštění
 
 ```bash
 python main.py
 ```
 
-### Spuštění s vlastním logovacím souborem
+#### Spuštění s vlastním logovacím souborem
 
 Upravte `main.py` a změňte cestu k logu:
 
@@ -147,7 +198,7 @@ Upravte `main.py` a změňte cestu k logu:
 log_file: Path = Path(__file__).parent / "vlastni_log.log"
 ```
 
-### Spuštění s jinou úrovní logování
+#### Spuštění s jinou úrovní logování
 
 Pro detailnější ladící informace upravte `main.py`:
 
@@ -403,26 +454,44 @@ WARNING | Pipeline pokračuje s částečně staženými daty (graceful degradat
 
 ## Testování
 
-### Manuální testování (Copy-paste příkazy)
+### Manuální testování s Dockerem
 
-```cmd
-del rick_and_morty.db
-| Smaže existující databázi pro čistý start | ✅ Ano (pokud DB existuje, smaže ji; pokud ne, příkaz selže ale neblokuje další kroky) |
+```bash
+# 1. Odstranění staré databáze pro čistý start
+# Windows (PowerShell)
+Remove-Item -Force .\data\rick_and_morty.db -ErrorAction SilentlyContinue
 
-python main.py
-| Spustí celé EL pipeline – extrahuje data z Rick & Morty API, validuje je a nahraje do SQLite databáze | ❌ Nevyžaduje DB – naopak, DB vytvoří |
+# Linux/Mac
+rm -f ./data/rick_and_morty.db
 
-python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Locations:', conn.execute('SELECT COUNT(*) FROM locations').fetchone()[0])"
-| Připojí se k databázi a vypíše počet lokací | ❌ Ne – vyžaduje existující `rick_and_morty.db` |
+# 2. Spuštění pipeline
+docker-compose up --build
 
-python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Characters:', conn.execute('SELECT COUNT(*) FROM characters').fetchone()[0])"
-| Připojí se k databázi a vypíše počet postav | ❌ Ne – vyžaduje existující `rick_and_morty.db` |
+# 3. Ověření počtu záznamů v databázi
+docker-compose run --rm el-pipeline python -c "import sqlite3; conn = sqlite3.connect('/app/data/rick_and_morty.db'); print('Locations:', conn.execute('SELECT COUNT(*) FROM locations').fetchone()[0])"
 
-python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Integrity:', conn.execute('PRAGMA integrity_check').fetchone()[0])"
-| Zkontroluje integritu databáze (vrací `ok` pokud je vše v pořádku) | ❌ Ne – vyžaduje existující `rick_and_morty.db` |
+docker-compose run --rm el-pipeline python -c "import sqlite3; conn = sqlite3.connect('/app/data/rick_and_morty.db'); print('Characters:', conn.execute('SELECT COUNT(*) FROM characters').fetchone()[0])"
+
+# 4. Kontrola integrity databáze
+docker-compose run --rm el-pipeline python -c "import sqlite3; conn = sqlite3.connect('/app/data/rick_and_morty.db'); print('Integrity:', conn.execute('PRAGMA integrity_check').fetchone()[0])"
 ```
 
-**Poznámka:** Příkazy pro ověření databáze (poslední 3) fungují **až po spuštění** `python main.py`, které databázi vytvoří a naplní daty.
+### Manuální testování s Pythonem
+
+```bash
+# 1. Odstranění staré databáze
+del rick_and_morty.db
+
+# 2. Spuštění pipeline
+python main.py
+
+# 3. Ověření počtu záznamů v databázi
+python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Locations:', conn.execute('SELECT COUNT(*) FROM locations').fetchone()[0])"
+python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Characters:', conn.execute('SELECT COUNT(*) FROM characters').fetchone()[0])"
+
+# 4. Kontrola integrity databáze
+python -c "import sqlite3; conn = sqlite3.connect('rick_and_morty.db'); print('Integrity:', conn.execute('PRAGMA integrity_check').fetchone()[0])"
+```
 
 ### Ukázkové dotazy
 
@@ -466,7 +535,7 @@ Tato sekce explicitně odpovídá na požadavky zadaní:
 | **3. Dvě entity** | ✅ | Characters (460+) + Locations (126) |
 | **4. Paginace** | ✅ | while cyklus s `next` kontrolou |
 | **5. Local storage** | ✅ | SQLite s relačním modelem |
-| **6. Entry point** | ✅ | `python main.py` |
+| **6. Entry point** | ✅ | `docker-compose up --build` (nebo `python main.py`) |
 | **7. Transformační diagram** | ✅ | Viz sekce výše |
 | **8. README dokumentace** | ✅ | API, entity, storage decision |
 
